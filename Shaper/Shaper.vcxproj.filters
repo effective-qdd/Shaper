@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{0a8ce668-37b6-4648-843e-2547c6741469}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Super">
+      <UniqueIdentifier>{5e715544-9da7-4b47-9a76-8a4138c67d36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Init">
+      <UniqueIdentifier>{b2725b47-b4ac-480e-a0ce-195b6e564e1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaper">
+      <UniqueIdentifier>{3e3a50a9-286e-4053-98ce-97f4bf5cace7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ShaperImp.h">
+      <Filter>Shaper</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Buffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Defines.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Display.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\File.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Filter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Frame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Process.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Processor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Stream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shaper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreFiles\DefinesCore.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreFiles\FilterCore.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreFiles\ProcessCore.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreFiles\ProcessorCore.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreFiles\StreamCore.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreFiles\BufferCore.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="SuperFiles\SuperFilter.h">
+      <Filter>Super</Filter>
+    </ClInclude>
+    <ClInclude Include="SuperFiles\SuperProcess.h">
+      <Filter>Super</Filter>
+    </ClInclude>
+    <ClInclude Include="SuperFiles\SuperProcessor.h">
+      <Filter>Super</Filter>
+    </ClInclude>
+    <ClInclude Include="SuperFiles\SuperStream.h">
+      <Filter>Super</Filter>
+    </ClInclude>
+    <ClInclude Include="SuperFiles\SuperBuffer.h">
+      <Filter>Super</Filter>
+    </ClInclude>
+    <ClInclude Include="SuperFiles\SuperDisplay.h">
+      <Filter>Super</Filter>
+    </ClInclude>
+    <ClInclude Include="SuperFiles\SuperFile.h">
+      <Filter>Super</Filter>
+    </ClInclude>
+    <ClInclude Include="InitFiles\DisplayInit.h">
+      <Filter>Init</Filter>
+    </ClInclude>
+    <ClInclude Include="InitFiles\FileInit.h">
+      <Filter>Init</Filter>
+    </ClInclude>
+    <ClInclude Include="InitFiles\ProcessorInit.h">
+      <Filter>Init</Filter>
+    </ClInclude>
+    <ClInclude Include="InitFiles\BufferInit.h">
+      <Filter>Init</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreFiles\AlgorithmCore.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Operator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SuperFiles\SuperOperator.h">
+      <Filter>Super</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\FFT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreFiles\FFTCore.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="SuperFiles\SuperFFT.h">
+      <Filter>Super</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Transform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreFiles\TransformCore.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="SuperFiles\SuperTransform.h">
+      <Filter>Super</Filter>
+    </ClInclude>
+    <ClInclude Include="SuperFiles\SuperIntensity.h">
+      <Filter>Super</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Intensity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreFiles\IntensityCore.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Morphology.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreFiles\MorphologyCore.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="SuperFiles\SuperMorphology.h">
+      <Filter>Super</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ShaperImp.cpp">
+      <Filter>Shaper</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaper.cpp">
+      <Filter>Shaper</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaper.def">
+      <Filter>Shaper</Filter>
+    </None>
+  </ItemGroup>
+</Project>

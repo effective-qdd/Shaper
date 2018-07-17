@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{973FF9D4-496C-4C60-AB74-B30791C96B48}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Shaper</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;SHAPER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>Shaper.def</ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_USRDLL;SHAPER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <AdditionalIncludeDirectories>../../Elder/Structure;./HeaderFiles;./InitFiles;./CoreFiles;./SuperFiles</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <OpenMPSupport>true</OpenMPSupport>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>Shaper.def</ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;SHAPER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>Shaper.def</ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;_USRDLL;SHAPER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <AdditionalIncludeDirectories>../../Elder/Structure;./HeaderFiles;./InitFiles;./CoreFiles;./SuperFiles</AdditionalIncludeDirectories>
+      <OpenMPSupport>true</OpenMPSupport>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>Shaper.def</ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="CoreFiles\AlgorithmCore.h" />
+    <ClInclude Include="CoreFiles\BufferCore.h" />
+    <ClInclude Include="CoreFiles\FFTCore.h" />
+    <ClInclude Include="CoreFiles\DefinesCore.h" />
+    <ClInclude Include="CoreFiles\FilterCore.h" />
+    <ClInclude Include="CoreFiles\IntensityCore.h" />
+    <ClInclude Include="CoreFiles\MorphologyCore.h" />
+    <ClInclude Include="CoreFiles\ProcessCore.h" />
+    <ClInclude Include="CoreFiles\ProcessorCore.h" />
+    <ClInclude Include="CoreFiles\StreamCore.h" />
+    <ClInclude Include="CoreFiles\TransformCore.h" />
+    <ClInclude Include="HeaderFiles\Buffer.h" />
+    <ClInclude Include="HeaderFiles\Defines.h" />
+    <ClInclude Include="HeaderFiles\Display.h" />
+    <ClInclude Include="HeaderFiles\FFT.h" />
+    <ClInclude Include="HeaderFiles\File.h" />
+    <ClInclude Include="HeaderFiles\Filter.h" />
+    <ClInclude Include="HeaderFiles\Frame.h" />
+    <ClInclude Include="HeaderFiles\Intensity.h" />
+    <ClInclude Include="HeaderFiles\Morphology.h" />
+    <ClInclude Include="HeaderFiles\Operator.h" />
+    <ClInclude Include="HeaderFiles\Process.h" />
+    <ClInclude Include="HeaderFiles\Processor.h" />
+    <ClInclude Include="HeaderFiles\Shaper.h" />
+    <ClInclude Include="HeaderFiles\Stream.h" />
+    <ClInclude Include="HeaderFiles\Transform.h" />
+    <ClInclude Include="InitFiles\BufferInit.h" />
+    <ClInclude Include="InitFiles\DisplayInit.h" />
+    <ClInclude Include="InitFiles\FileInit.h" />
+    <ClInclude Include="InitFiles\ProcessorInit.h" />
+    <ClInclude Include="ShaperImp.h" />
+    <ClInclude Include="SuperFiles\SuperBuffer.h" />
+    <ClInclude Include="SuperFiles\SuperDisplay.h" />
+    <ClInclude Include="SuperFiles\SuperFFT.h" />
+    <ClInclude Include="SuperFiles\SuperFile.h" />
+    <ClInclude Include="SuperFiles\SuperFilter.h" />
+    <ClInclude Include="SuperFiles\SuperIntensity.h" />
+    <ClInclude Include="SuperFiles\SuperMorphology.h" />
+    <ClInclude Include="SuperFiles\SuperOperator.h" />
+    <ClInclude Include="SuperFiles\SuperProcess.h" />
+    <ClInclude Include="SuperFiles\SuperProcessor.h" />
+    <ClInclude Include="SuperFiles\SuperStream.h" />
+    <ClInclude Include="SuperFiles\SuperTransform.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Shaper.cpp" />
+    <ClCompile Include="ShaperImp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaper.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ShaperBuffer\ShaperBuffer.vcxproj">
+      <Project>{e94354ee-1e1f-4b8f-811b-315d23b273ea}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\ShaperDisplay\ShaperDisplay.vcxproj">
+      <Project>{2d702731-32aa-4f7e-8a70-fa0185cff852}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\ShaperFile\ShaperFile.vcxproj">
+      <Project>{ea803904-0d99-4f93-8d04-677ea7351e9c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\ShaperOperator\ShaperOperator.vcxproj">
+      <Project>{4f9d7ac4-3bbe-4540-b613-a35b594213c0}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\ShaperProcessor\ShaperProcessor.vcxproj">
+      <Project>{6b9a00c2-ff64-40bd-8da3-9906c6e8ccba}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\ShaperProcess\ShaperProcess.vcxproj">
+      <Project>{cbc9ee99-6e68-48a2-9885-d081b1b13f70}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
