@@ -1,5 +1,5 @@
 # Shaper
-This is a framework of image processing. It supports multi core image processing. 
+This is a framework of image processing and make full use of [Elder](https://github.com/effective-qdd/Elder). It supports multi core image processing. 
 Currently it works on windows only. You can load the shaper dynamically.
 It also support python. You can call the functions of shaper by the python warp.
 
@@ -38,6 +38,7 @@ To enable multi core processing, just pass the arguments to the Initialize funct
 shaper->Initialize(true);
 ```
 ### Dependency
+* Elder
 * Intel IPP
 * Intel TBB
 * OpenGL - GLFW and GLAD
