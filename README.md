@@ -38,6 +38,7 @@ To enable multi core processing, just pass the arguments to the Initialize funct
 shaper->Initialize(true);
 ```
 ### Dependency
+* C++ 17 - Visual Studio 2017
 * Elder
 * Intel IPP
 * Intel TBB
