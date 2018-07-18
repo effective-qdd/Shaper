@@ -1,5 +1,7 @@
 # Shaper
-This is a framework of image processing. It supports multi core processing. Currently it works on windows only. You can load the shaper dynamically.
+This is a framework of image processing. It supports multi core image processing. 
+Currently it works on windows only. You can load the shaper dynamically.
+It also support python. You can call the functions of shaper by the python warp.
 
 ### Features
 * Buffer - Automatically manage memory and identify with ID
@@ -35,6 +37,11 @@ To enable multi core processing, just pass the arguments to the Initialize funct
 ```C++
 shaper->Initialize(true);
 ```
+### Dependency
+* Intel IPP
+* Intel TBB
+* OpenGL - GLFW and GLAD
+* SWIG and python3 - If you want compile python warp
 ### TODO
 * Add more file format
 * Add more image processing algorithms
