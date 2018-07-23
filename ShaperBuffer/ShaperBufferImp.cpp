@@ -529,6 +529,114 @@ namespace SHAPER
 		return data;
 	}
 
+	unsigned char const* CBufferImp::Data8u(IID iid)
+	{
+		std::lock_guard<std::mutex> lock(m_mutex);
+		ENSURE_THROW_MSG(m_acquiredBufferMap.find(iid) != m_acquiredBufferMap.end(), "Can not find such iid");
+		auto anyImage = m_acquiredBufferMap.at(iid);
+		ASSERT_LOG(anyImage.type() == typeid(std::shared_ptr<ELDER::CImage8u1cIPPI>), "Image type error");
+		
+		auto image8u1c = std::any_cast<std::shared_ptr<ELDER::CImage8u1cIPPI>>(anyImage);
+		unsigned char* data = nullptr;
+		if (image8u1c->Width() == image8u1c->WidthBytes())
+		{
+			data = image8u1c->Data();
+		}
+		else
+		{
+			SID bid = iid >> 16;
+			ENSURE_THROW_MSG(m_dataBuf8uMap.find(bid) != m_dataBuf8uMap.end(), "Can not find such bid");
+			auto dataBuf8u = m_dataBuf8uMap[bid];
+			if (dataBuf8u != nullptr)
+			{
+				auto status = ippiCopy_8u_C1R
+				(
+					image8u1c->Data(),
+					image8u1c->WidthBytes(),
+					dataBuf8u,
+					image8u1c->Width(),
+					{ image8u1c->Width(), image8u1c->Height() }
+				);
+				ENSURE_THROW_MSG(status == ippStsNoErr, "ippiCopy_8u_C1R failed!");
+				data = dataBuf8u;
+			}
+		}
+
+		return data;
+	}
+
+	unsigned short const* CBufferImp::Data16u(IID iid)
+	{
+		std::lock_guard<std::mutex> lock(m_mutex);
+		ENSURE_THROW_MSG(m_acquiredBufferMap.find(iid) != m_acquiredBufferMap.end(), "Can not find such iid");
+		auto anyImage = m_acquiredBufferMap.at(iid);
+		ASSERT_LOG(anyImage.type() == typeid(std::shared_ptr<ELDER::CImage16u1cIPPI>), "Image type error");
+
+		auto image16u1c = std::any_cast<std::shared_ptr<ELDER::CImage16u1cIPPI>>(anyImage);
+		unsigned short* data = nullptr;
+		if (image16u1c->Width() == image16u1c->WidthBytes())
+		{
+			data = image16u1c->Data();
+		}
+		else
+		{
+			SID bid = iid >> 16;
+			ENSURE_THROW_MSG(m_dataBuf16uMap.find(bid) != m_dataBuf16uMap.end(), "Can not find such bid");
+			auto dataBuf16u = m_dataBuf16uMap[bid];
+			if (dataBuf16u != nullptr)
+			{
+				auto status = ippiCopy_16u_C1R
+				(
+					image16u1c->Data(),
+					image16u1c->WidthBytes(),
+					dataBuf16u,
+					image16u1c->Width(),
+					{ image16u1c->Width(), image16u1c->Height() }
+				);
+				ENSURE_THROW_MSG(status == ippStsNoErr, "ippiCopy_16u_C1R failed!");
+				data = dataBuf16u;
+			}
+		}
+
+		return data;
+	}
+
+	float const* CBufferImp::Data32f(IID iid)
+	{
+		std::lock_guard<std::mutex> lock(m_mutex);
+		ENSURE_THROW_MSG(m_acquiredBufferMap.find(iid) != m_acquiredBufferMap.end(), "Can not find such iid");
+		auto anyImage = m_acquiredBufferMap.at(iid);
+		ASSERT_LOG(anyImage.type() == typeid(std::shared_ptr<ELDER::CImage32f1cIPPI>), "Image type error");
+
+		auto image32f1c = std::any_cast<std::shared_ptr<ELDER::CImage32f1cIPPI>>(anyImage);
+		float* data = nullptr;
+		if (image32f1c->Width() == image32f1c->WidthBytes())
+		{
+			data = image32f1c->Data();
+		}
+		else
+		{
+			SID bid = iid >> 16;
+			ENSURE_THROW_MSG(m_dataBuf32fMap.find(bid) != m_dataBuf32fMap.end(), "Can not find such bid");
+			auto dataBuf32f = m_dataBuf32fMap[bid];
+			if (dataBuf32f != nullptr)
+			{
+				auto status = ippiCopy_32f_C1R
+				(
+					image32f1c->Data(),
+					image32f1c->WidthBytes(),
+					dataBuf32f,
+					image32f1c->Width(),
+					{ image32f1c->Width(), image32f1c->Height() }
+				);
+				ENSURE_THROW_MSG(status == ippStsNoErr, "ippiCopy_32f_C1R failed!");
+				data = dataBuf32f;
+			}
+		}
+
+		return data;
+	}
+
 	ELDER::ImageInfo CBufferImp::Info(IID iid)
 	{
 		SID bid = iid >> 16;
@@ -668,13 +776,20 @@ namespace SHAPER
 			std::shared_ptr<ELDER::IImagePool> processImagePool = nullptr;
 			std::shared_ptr<ELDER::CImage8u1cIPPI> image8u1c = nullptr;
 			std::shared_ptr<ELDER::CImage32f1cIPPI> image32f1c = nullptr;
+			++m_sid;
 			if (imageInfo.bitDepth == 8)
 			{
 				rawImagePool = std::make_shared<ELDER::CImagePool8u1c>();
 				rawImagePool->Initialize(RawBufferSize, imageInfo.size);
 				processImagePool = std::make_shared<ELDER::CImagePool8u1c>();
 				processImagePool->Initialize(ProcessBufferSize, imageInfo.size);
-				
+				if (imageInfo.size.width % 64 != 0)
+				{
+					auto revertBuf = ippsMalloc_8u(imageInfo.size.width * imageInfo.size.height);
+					m_revertBufMap.emplace(m_sid, revertBuf);
+					auto dataBuf = ippsMalloc_8u(imageInfo.size.width * imageInfo.size.height);
+					m_dataBuf8uMap.emplace(m_sid, dataBuf);
+				}
 			}
 			else if (imageInfo.bitDepth == 16)
 			{
@@ -685,7 +800,14 @@ namespace SHAPER
 				image8u1c = std::make_shared<ELDER::CImage8u1cIPPI>();
 				image8u1c->Initialize(imageInfo.size.width, imageInfo.size.height);
 				image32f1c = std::make_shared<ELDER::CImage32f1cIPPI>();
-				image32f1c->Initialize(imageInfo.size.width, imageInfo.size.height);				
+				image32f1c->Initialize(imageInfo.size.width, imageInfo.size.height);	
+				if (imageInfo.size.width % 64 != 0)
+				{
+					auto revertBuf = ippsMalloc_8u(imageInfo.size.width * imageInfo.size.height);
+					m_revertBufMap.emplace(m_sid, revertBuf);
+					auto dataBuf = ippsMalloc_16u(imageInfo.size.width * imageInfo.size.height);
+					m_dataBuf16uMap.emplace(m_sid, dataBuf);
+				}
 			}
 			else if (imageInfo.bitDepth == 32)
 			{
@@ -697,8 +819,14 @@ namespace SHAPER
 				image8u1c->Initialize(imageInfo.size.width, imageInfo.size.height);
 				image32f1c = std::make_shared<ELDER::CImage32f1cIPPI>();
 				image32f1c->Initialize(imageInfo.size.width, imageInfo.size.height);
+				if (imageInfo.size.width % 64 != 0)
+				{
+					auto revertBuf = ippsMalloc_8u(imageInfo.size.width * imageInfo.size.height);
+					m_revertBufMap.emplace(m_sid, revertBuf);
+					auto dataBuf = ippsMalloc_32f(imageInfo.size.width * imageInfo.size.height);
+					m_dataBuf32fMap.emplace(m_sid, dataBuf);
+				}
 			}
-			++m_sid;
 
 			m_processorInit->Initialize(m_sid, imageInfo);
 			m_bidMap.emplace(imageInfo, m_sid);
@@ -706,11 +834,6 @@ namespace SHAPER
 			m_rawImagePoolMap.emplace(m_sid, rawImagePool);
 			m_processImagePoolMap.emplace(m_sid, processImagePool);
 			m_iidIncMap.emplace(m_sid, 0);
-			if (imageInfo.size.width % 64 != 0)
-			{
-				auto revertBuf = ippsMalloc_8u(imageInfo.size.width * imageInfo.size.height);
-				m_revertBufMap.emplace(m_sid, revertBuf);
-			}
 			m_revertTmpBuf8uMap.emplace(m_sid, image8u1c);
 			m_revertTmpBuf32fMap.emplace(m_sid, image32f1c);
 

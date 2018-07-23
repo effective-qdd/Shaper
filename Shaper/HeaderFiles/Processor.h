@@ -5,17 +5,13 @@
 #include "Filter.h"
 #include "Transform.h"
 #include "Intensity.h"
+#include "Correction.h"
 
 namespace SHAPER
 {		
-	class CFilter;
-	class CRotation;
-	class CFlip;
-	class CIntensity;
 	class CProcessor
 	{
 	public:
-
 		CProcessor() {}
 
 		virtual ~CProcessor() {}
@@ -28,6 +24,9 @@ namespace SHAPER
 
 		/// Get CEnhancement ptr
 		virtual CIntensity* Intensity() const noexcept(false) = 0;
+
+		/// Get CCorrection ptr
+		virtual CCorrection* Correction() const noexcept(false) = 0;
 	};
 }	
 

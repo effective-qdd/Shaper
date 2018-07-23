@@ -156,6 +156,15 @@
     <ClInclude Include="SuperFiles\SuperMorphology.h">
       <Filter>Super</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderFiles\Correction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreFiles\CorrectionCore.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="SuperFiles\SuperCorrection.h">
+      <Filter>Super</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShaperImp.cpp">

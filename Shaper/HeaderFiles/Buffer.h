@@ -30,6 +30,15 @@ namespace SHAPER
 		/// Get 8bit gray scale data.
 		virtual unsigned char const* Revert8u(IID) noexcept(false) = 0;
 
+		/// Get raw data if the image data type is unsigned char.
+		virtual unsigned char const* Data8u(IID) noexcept(false) = 0;
+
+		/// Get raw data if the image data type is unsigned short.
+		virtual unsigned short const* Data16u(IID) noexcept(false) = 0;
+
+		/// Get raw data if the image data type is float.
+		virtual float const* Data32f(IID) noexcept(false) = 0;
+
 		/// Get image info of iid.
 		virtual ELDER::ImageInfo Info(IID) noexcept(false) = 0;
 

@@ -38,6 +38,16 @@ namespace SHAPER
 		/// Multi core process a iid with specify processing list.
 		virtual IID ApplyMultiCore(PID, IID) noexcept(false) = 0;
 
+		/// Corrections
+		/// Just apply the dark reference correction.
+		virtual IID ApplyCorrectionDarkRef(IID) noexcept(false) = 0;
+
+		/// Just apply the dark and gain reference correction.
+		virtual IID ApplyCorrectionDarkGainRef(IID) noexcept(false) = 0;
+
+		/// Just apply the normalized cross correlation correction.
+		virtual IID ApplyCorrectionCrossCorrelationNormal(IID) noexcept(false) = 0;
+
 		/// Filter
 		/// Just apply the median 3x3 filter.
 		virtual IID ApplyFilterMedian3x3(IID) noexcept(false) = 0;

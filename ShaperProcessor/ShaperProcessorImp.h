@@ -5,6 +5,7 @@
 
 namespace SHAPER
 {
+	class CCorrectionImp;
 	class CFilterImp;
 	class CIntensityImp;
 	class CMorphologyImp;
@@ -39,6 +40,8 @@ namespace SHAPER
 
 		CTransform* Transform() const;
 
+		CCorrection* Correction() const;
+
 	private:
 		std::map<ProcessorTypes, std::shared_ptr<ELDER::CImageProcessor>> LoadProcessors(ELDER::ImageInfo const&);
 
@@ -51,6 +54,7 @@ namespace SHAPER
 		std::map<SID, std::map<ProcessorTypes, std::shared_ptr<ELDER::CImageProcessor>>> m_availableProcessorMap;
 		std::map<SID, std::deque<std::map<ProcessorTypes, std::shared_ptr<ELDER::CImageProcessor>>>> m_availableProcessorMultiCoreDeque;
 		std::map<SID, std::map<InnerProcessorTypes, std::shared_ptr<ELDER::CImageProcessor>>> m_availableInnerProcessorMap;
+		std::shared_ptr<CCorrectionImp> m_correctionImp;
 		std::shared_ptr<CFilterImp> m_filterImp;
 		std::shared_ptr<CIntensityImp> m_intensityImp;
 		std::shared_ptr<CMorphologyImp> m_morphologyImp;

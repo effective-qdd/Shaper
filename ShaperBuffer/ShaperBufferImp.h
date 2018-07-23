@@ -31,6 +31,12 @@ namespace SHAPER
 
 		unsigned char const* Revert8u(IID);
 
+		unsigned char const* Data8u(IID);
+
+		unsigned short const* Data16u(IID);
+
+		float const* Data32f(IID);
+
 		ELDER::ImageInfo Info(IID);
 
 		void Release(IID);
@@ -68,6 +74,9 @@ namespace SHAPER
 		std::map<SID, std::shared_ptr<ELDER::IImagePool>> m_rawImagePoolMap;
 		std::map<SID, std::shared_ptr<ELDER::IImagePool>> m_processImagePoolMap;
 		std::map<SID, unsigned char*> m_revertBufMap;
+		std::map<SID, unsigned char*> m_dataBuf8uMap;
+		std::map<SID, unsigned short*> m_dataBuf16uMap;
+		std::map<SID, float*> m_dataBuf32fMap;
 		std::map<SID, std::shared_ptr<ELDER::CImage8u1cIPPI>> m_revertTmpBuf8uMap;
 		std::map<SID, std::shared_ptr<ELDER::CImage32f1cIPPI>> m_revertTmpBuf32fMap;
 		std::map<IID, std::any> m_acquiredBufferMap;

@@ -296,7 +296,7 @@ int main()
 	try
 	{
 		
-		auto iid0 = buffer->Acquire(ELDER::ImageInfo({ 8192, 8192 }, 16));
+		//auto iid0 = buffer->Acquire(ELDER::ImageInfo({ 8192, 8192 }, 16));
 		//auto iid1 = buffer->Acquire(ELDER::ImageInfo({ 8192, 8192 }, 16));
 // 		unsigned short* input = new unsigned short[8192 * 8192];
 // 		memset(input, 0, 8192 * 8192 * 2);
@@ -318,12 +318,23 @@ int main()
 // 		//auto fid1 = file->Open("D:/Data/t2.tif");
 //		auto info = file->Info(fid1);
  		auto stream1 = file->Stream(fid1);
- 		auto iid = stream1->First();
+ 		auto iid1 = stream1->First();
+
+		auto fid2 = file->Open("D:/Data/TestImages/t2.tif");
+		auto stream2 = file->Stream(fid2);
+		auto iid2 = stream2->First();
 // 		auto iidInfo = buffer->Info(iid);
 //		process->ApplyMultiCore(pid, iid);
- 		display->Show(iid);
 
 
+		auto dataBuf = buffer->Data8u(iid1);
+		auto corr = processor->Correction();
+		corr->SetTemplateReference(dataBuf);
+		auto iid = process->ApplyCorrectionCrossCorrelationNormal(iid2);
+
+		//auto iid1 = process->ApplyCorrectionDarkRef(iid);
+
+		display->Show(iid);
 		//RunPipeline(file, process, buffer);
 		
 		
@@ -359,7 +370,8 @@ int main()
 	}
 	catch(std::exception &e)
 	{
-		LOG_ERROR(e.what());
+		//LOG_ERROR(e.what());
+		std::cout << e.what() << std::endl;
 	}
 
 	//file->Save(iid, "D:/iid.tif", SHAPER::FileTypes::kTif);

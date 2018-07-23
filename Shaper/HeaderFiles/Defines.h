@@ -33,8 +33,13 @@ namespace SHAPER
 
 	enum class ProcessorTypes
 	{
+		/// Correction
+		kDarkRef = 1,
+		kDarkGainRef,
+		kCrossCorrelationNormal,
+
 		/// Filter
-		kMedian3x3 = 1,
+		kMedian3x3,
 		kMedian5x5,
 		kGaussian3x3,
 		kGaussian5x5,		

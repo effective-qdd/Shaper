@@ -156,6 +156,7 @@
   <ItemGroup>
     <ClInclude Include="CoreFiles\AlgorithmCore.h" />
     <ClInclude Include="CoreFiles\BufferCore.h" />
+    <ClInclude Include="CoreFiles\CorrectionCore.h" />
     <ClInclude Include="CoreFiles\FFTCore.h" />
     <ClInclude Include="CoreFiles\DefinesCore.h" />
     <ClInclude Include="CoreFiles\FilterCore.h" />
@@ -166,6 +167,7 @@
     <ClInclude Include="CoreFiles\StreamCore.h" />
     <ClInclude Include="CoreFiles\TransformCore.h" />
     <ClInclude Include="HeaderFiles\Buffer.h" />
+    <ClInclude Include="HeaderFiles\Correction.h" />
     <ClInclude Include="HeaderFiles\Defines.h" />
     <ClInclude Include="HeaderFiles\Display.h" />
     <ClInclude Include="HeaderFiles\FFT.h" />
@@ -186,6 +188,7 @@
     <ClInclude Include="InitFiles\ProcessorInit.h" />
     <ClInclude Include="ShaperImp.h" />
     <ClInclude Include="SuperFiles\SuperBuffer.h" />
+    <ClInclude Include="SuperFiles\SuperCorrection.h" />
     <ClInclude Include="SuperFiles\SuperDisplay.h" />
     <ClInclude Include="SuperFiles\SuperFFT.h" />
     <ClInclude Include="SuperFiles\SuperFile.h" />

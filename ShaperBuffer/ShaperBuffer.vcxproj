@@ -101,7 +101,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_USRDLL;SHAPERBUFFER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_USRDLL;SHAPERBUFFER_EXPORTS;_SILENCE_CXX17_UNCAUGHT_EXCEPTION_DEPRECATION_WARNING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
       <AdditionalIncludeDirectories>../../Elder/Structure;../Shaper/HeaderFiles;../Shaper/InitFiles;../Shaper/CoreFiles;../Shaper/SuperFiles</AdditionalIncludeDirectories>
       <OpenMPSupport>true</OpenMPSupport>

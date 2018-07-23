@@ -11,8 +11,6 @@ namespace SHAPER
 		CMorphologyCore() = default;
 
 		virtual ~CMorphologyCore() = default;
-
-		//virtual std::map<ProcessorTypes, std::shared_ptr<ELDER::CImageProcessor>> const& Available(SID) noexcept(false) = 0;
 	};
 }	
 

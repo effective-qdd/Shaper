@@ -1,5 +1,6 @@
 #include "ShaperProcessorImp.h"
 
+#include "ShaperCorrectionImp.h"
 #include "ShaperFilterImp.h"
 #include "ShaperIntensityImp.h"
 #include "ShaperMorphologyImp.h"
@@ -12,6 +13,7 @@ namespace SHAPER
 		: CSuperProcessor()
 		, m_isMultiCoreEnable(enable)
 		, m_multiCoreNum(num)
+		, m_correctionImp(std::make_shared<CCorrectionImp>())
 		, m_filterImp(std::make_shared<CFilterImp>())
 		, m_intensityImp(std::make_shared<CIntensityImp>())
 		, m_morphologyImp(std::make_shared<CMorphologyImp>())
@@ -138,6 +140,13 @@ namespace SHAPER
 		return dynamic_cast<CTransform *>(m_transformImp.get());
 	}
 
+	CCorrection* CProcessorImp::Correction() const
+	{
+		ASSERT_LOG(m_correctionImp != nullptr, "m_transformImp is null");
+
+		return dynamic_cast<CCorrection *>(m_correctionImp.get());
+	}
+
 	CIntensity* CProcessorImp::Intensity() const
 	{
 		ASSERT_LOG(m_intensityImp != nullptr, "m_flipImp is null");
@@ -148,6 +157,9 @@ namespace SHAPER
 	std::map<ProcessorTypes, std::shared_ptr<ELDER::CImageProcessor>> CProcessorImp::LoadProcessors(ELDER::ImageInfo const& imageInfo)
 	{
 		std::map<ProcessorTypes, std::shared_ptr<ELDER::CImageProcessor>> availableProcessors;
+
+		auto availabelCorrections = m_correctionImp->Load(imageInfo);
+		availableProcessors.insert(availabelCorrections.begin(), availabelCorrections.end());
 
 		auto availabelIntensitys = m_intensityImp->Load(imageInfo);
 		availableProcessors.insert(availabelIntensitys.begin(), availabelIntensitys.end());

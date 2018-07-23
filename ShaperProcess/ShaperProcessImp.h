@@ -37,6 +37,12 @@ namespace SHAPER
 
 		IID ApplyMultiCore(PID, IID);
 
+		IID ApplyCorrectionDarkRef(IID);
+
+		IID ApplyCorrectionDarkGainRef(IID);
+
+		IID ApplyCorrectionCrossCorrelationNormal(IID);
+
 		IID ApplyFilterMedian3x3(IID);
 
 		IID ApplyFilterMedian5x5(IID);

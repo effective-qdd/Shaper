@@ -20,6 +20,9 @@ namespace SHAPER
 		ASSERT_LOG(m_bufferCore != nullptr, "m_bufferCore is null");
 		ASSERT_LOG(processorCore != nullptr, "processorCore is null");
 
+		m_supportedProcessorTypeList.push_back(ProcessorTypes::kDarkRef);
+		m_supportedProcessorTypeList.push_back(ProcessorTypes::kDarkGainRef);
+		m_supportedProcessorTypeList.push_back(ProcessorTypes::kCrossCorrelationNormal);
 		m_supportedProcessorTypeList.push_back(ProcessorTypes::kMedian3x3);
 		m_supportedProcessorTypeList.push_back(ProcessorTypes::kMedian5x5);
 		m_supportedProcessorTypeList.push_back(ProcessorTypes::kGaussian3x3);
@@ -203,6 +206,45 @@ namespace SHAPER
 		m_processorCore->PushMultiCore(sid, std::move(availableProcessorMultiCoreMap));
 
 		return m_bufferCore->MakeID(std::move(buf), sid);
+	}
+
+	IID CProcessImp::ApplyCorrectionDarkRef(IID iid)
+	{
+		std::lock_guard<std::mutex> lock(m_applyMutex);
+		auto buf = m_bufferCore->Resume(iid);
+		SID sid = iid >> 16;
+		auto correction = m_processorCore->Active(sid, ProcessorTypes::kDarkRef);
+		auto correctionBuffer = std::move(m_bufferCore->AcquireRaw(sid));
+		ELDER::ImageInfo outImageInfo;
+		ENSURE_THROW_MSG(correction->Apply(std::move(buf), std::move(correctionBuffer), outImageInfo), "Apply dark reference Failed");
+
+		return m_bufferCore->MakeID(std::move(correctionBuffer), sid);
+	}
+
+	IID CProcessImp::ApplyCorrectionDarkGainRef(IID iid)
+	{
+		std::lock_guard<std::mutex> lock(m_applyMutex);
+		auto buf = m_bufferCore->Resume(iid);
+		SID sid = iid >> 16;
+		auto correction = m_processorCore->Active(sid, ProcessorTypes::kDarkGainRef);
+		auto correctionBuffer = std::move(m_bufferCore->AcquireRaw(sid));
+		ELDER::ImageInfo outImageInfo;
+		ENSURE_THROW_MSG(correction->Apply(std::move(buf), std::move(correctionBuffer), outImageInfo), "Apply dark gain reference Failed");
+
+		return m_bufferCore->MakeID(std::move(correctionBuffer), sid);
+	}
+
+	IID CProcessImp::ApplyCorrectionCrossCorrelationNormal(IID iid)
+	{
+		std::lock_guard<std::mutex> lock(m_applyMutex);
+		auto buf = m_bufferCore->Resume(iid);
+		SID sid = iid >> 16;
+		auto correction = m_processorCore->Active(sid, ProcessorTypes::kCrossCorrelationNormal);
+		auto correctionBuffer = std::move(m_bufferCore->AcquireRaw(sid));
+		ELDER::ImageInfo outImageInfo;
+		ENSURE_THROW_MSG(correction->Apply(std::move(buf), std::move(correctionBuffer), outImageInfo), "Apply normalized cross correlation Failed");
+
+		return m_bufferCore->MakeID(std::move(correctionBuffer), sid);
 	}
 
 	IID CProcessImp::ApplyFilterMedian3x3(IID iid)
