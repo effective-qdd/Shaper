@@ -17,9 +17,6 @@ namespace SHAPER
 
 		/// Set dark reference image to Dark Gain Correction
 		virtual void SetDarkGainReferences(float const*const darkRefImage, float const*const gainRefImage) = 0;
-
-		/// Set template reference image to normalized cross-correlation correction
-		virtual void SetTemplateReference(void const*const templateRefImage) = 0;
 	};
 }
 #endif

@@ -12,7 +12,6 @@ namespace SHAPER
 		CSuperCorrection() = default;
 
 		virtual ~CSuperCorrection() = default;
-
 	};
 }
 

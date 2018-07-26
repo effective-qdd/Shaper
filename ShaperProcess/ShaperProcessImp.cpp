@@ -22,7 +22,6 @@ namespace SHAPER
 
 		m_supportedProcessorTypeList.push_back(ProcessorTypes::kDarkRef);
 		m_supportedProcessorTypeList.push_back(ProcessorTypes::kDarkGainRef);
-		m_supportedProcessorTypeList.push_back(ProcessorTypes::kCrossCorrelationNormal);
 		m_supportedProcessorTypeList.push_back(ProcessorTypes::kMedian3x3);
 		m_supportedProcessorTypeList.push_back(ProcessorTypes::kMedian5x5);
 		m_supportedProcessorTypeList.push_back(ProcessorTypes::kGaussian3x3);
@@ -230,19 +229,6 @@ namespace SHAPER
 		auto correctionBuffer = std::move(m_bufferCore->AcquireRaw(sid));
 		ELDER::ImageInfo outImageInfo;
 		ENSURE_THROW_MSG(correction->Apply(std::move(buf), std::move(correctionBuffer), outImageInfo), "Apply dark gain reference Failed");
-
-		return m_bufferCore->MakeID(std::move(correctionBuffer), sid);
-	}
-
-	IID CProcessImp::ApplyCorrectionCrossCorrelationNormal(IID iid)
-	{
-		std::lock_guard<std::mutex> lock(m_applyMutex);
-		auto buf = m_bufferCore->Resume(iid);
-		SID sid = iid >> 16;
-		auto correction = m_processorCore->Active(sid, ProcessorTypes::kCrossCorrelationNormal);
-		auto correctionBuffer = std::move(m_bufferCore->AcquireRaw(sid));
-		ELDER::ImageInfo outImageInfo;
-		ENSURE_THROW_MSG(correction->Apply(std::move(buf), std::move(correctionBuffer), outImageInfo), "Apply normalized cross correlation Failed");
 
 		return m_bufferCore->MakeID(std::move(correctionBuffer), sid);
 	}

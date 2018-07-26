@@ -295,7 +295,20 @@ int main()
 // 	auto id6 = buffer->Acquire(ELDER::ImageInfo({ 2048, 1536 }, 32));
 	try
 	{
-		
+// 		unsigned char* data = new unsigned char[1024 * 1024];
+// 		memset(data, 0, 1024 * 1024);
+// 	
+// 		for (int i = 412; i < 422; ++i)
+// 		{
+// 			for (int j = 412; j < 422; ++j)
+// 			{
+// 				data[1024 * i + j] = 255;
+// 			}
+// 		}
+// 
+// 		auto iid = buffer->Acquire(data, ELDER::ImageInfo({ 1024, 1024 }, 8));
+// 		file->Save(iid, "D:/a2.tif", SHAPER::FileTypes::kTif);
+// 		display->Show(iid);
 		//auto iid0 = buffer->Acquire(ELDER::ImageInfo({ 8192, 8192 }, 16));
 		//auto iid1 = buffer->Acquire(ELDER::ImageInfo({ 8192, 8192 }, 16));
 // 		unsigned short* input = new unsigned short[8192 * 8192];
@@ -314,27 +327,22 @@ int main()
 		//auto iid2 = operate->Copy(iid);
 		
 
-		auto fid1 = file->Open("D:/Data/TestImages/t4.tif");
-// 		//auto fid1 = file->Open("D:/Data/t2.tif");
-//		auto info = file->Info(fid1);
+		auto fid1 = file->Open("D:/Data/TestImages/a2.tif");
  		auto stream1 = file->Stream(fid1);
  		auto iid1 = stream1->First();
 
-		auto fid2 = file->Open("D:/Data/TestImages/t2.tif");
-		auto stream2 = file->Stream(fid2);
-		auto iid2 = stream2->First();
-// 		auto iidInfo = buffer->Info(iid);
-//		process->ApplyMultiCore(pid, iid);
+ 		auto fid2 = file->Open("D:/Data/TestImages/a1.tif");
+ 		auto stream2 = file->Stream(fid2);
+ 		auto iid2 = stream2->First();
 
-
-		auto dataBuf = buffer->Data8u(iid1);
-		auto corr = processor->Correction();
-		corr->SetTemplateReference(dataBuf);
-		auto iid = process->ApplyCorrectionCrossCorrelationNormal(iid2);
-
+ 		auto dataBuf = buffer->Data8u(iid1);
+ 		auto corr = processor->Correction();
+ 		corr->SetTemplateReference(dataBuf);
+ 		auto iid = process->ApplyCorrectionCrossCorrelationNormal(iid2);
+		display->Show(iid);
 		//auto iid1 = process->ApplyCorrectionDarkRef(iid);
 
-		display->Show(iid);
+//		display->Show(iid);
 		//RunPipeline(file, process, buffer);
 		
 		

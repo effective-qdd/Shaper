@@ -36,7 +36,6 @@ namespace SHAPER
 		/// Correction
 		kDarkRef = 1,
 		kDarkGainRef,
-		kCrossCorrelationNormal,
 
 		/// Filter
 		kMedian3x3,
