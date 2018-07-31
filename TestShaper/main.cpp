@@ -327,19 +327,20 @@ int main()
 		//auto iid2 = operate->Copy(iid);
 		
 
-		auto fid1 = file->Open("D:/Data/TestImages/a2.tif");
+		auto fid1 = file->Open("D:/Data/TestImages/t4.tif");
  		auto stream1 = file->Stream(fid1);
  		auto iid1 = stream1->First();
+		display->Show(iid1);
 
- 		auto fid2 = file->Open("D:/Data/TestImages/a1.tif");
- 		auto stream2 = file->Stream(fid2);
- 		auto iid2 = stream2->First();
+//  		auto fid2 = file->Open("D:/Data/TestImages/a1.tif");
+//  		auto stream2 = file->Stream(fid2);
+//  		auto iid2 = stream2->First();
 
- 		auto dataBuf = buffer->Data8u(iid1);
- 		auto corr = processor->Correction();
- 		corr->SetTemplateReference(dataBuf);
- 		auto iid = process->ApplyCorrectionCrossCorrelationNormal(iid2);
-		display->Show(iid);
+		auto iid2 = process->ApplyFilterBilateral(iid1);
+
+		//auto iid3 = process->ApplyFilterLaplace5x5(iid2);
+ 		
+		display->Show(iid2);
 		//auto iid1 = process->ApplyCorrectionDarkRef(iid);
 
 //		display->Show(iid);
@@ -364,7 +365,7 @@ int main()
 		//auto rotation = processor->Rotation();
 		//rotation->SetRotationSpecialAngle(SHAPER::SpecialAngles::k270Degrees);
 		//auto iid2 = process->ApplyHistogramEqualization(iid);
-		//file->Save(iid1, "D:/iid1.tif", SHAPER::FileTypes::kTif);
+		file->Save(iid2, "D:/iid2.tif", SHAPER::FileTypes::kTif);
 		//display->Show(iid2);
 		//auto iid3 = process->ApplyHistogramLocal(iid);
 		//display->Show(iid3);

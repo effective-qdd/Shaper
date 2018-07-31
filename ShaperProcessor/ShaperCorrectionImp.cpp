@@ -83,12 +83,4 @@ namespace SHAPER
 			darkGainRef->SetReferences(darkRefImage, gainRefImage);
 		}
 	}
-
-	void CCorrectionImp::SetTemplateReference(void const*const templateRefImage)
-	{
-		for (const auto& crossCorrNorm : m_crossCorrNormList)
-		{
-			crossCorrNorm->SetTemplateReference(templateRefImage);
-		}
-	}
 }
