@@ -327,7 +327,7 @@ int main()
 		//auto iid2 = operate->Copy(iid);
 		
 
-		auto fid1 = file->Open("D:/Data/TestImages/t4.tif");
+		auto fid1 = file->Open("D:/Data/TestImages/dark.tif");
  		auto stream1 = file->Stream(fid1);
  		auto iid1 = stream1->First();
 		display->Show(iid1);
@@ -336,11 +336,14 @@ int main()
 //  		auto stream2 = file->Stream(fid2);
 //  		auto iid2 = stream2->First();
 
-		auto iid2 = process->ApplyFilterBilateral(iid1);
+		auto iid2 = process->ApplyFilterSobel3x3(iid1);
 
 		//auto iid3 = process->ApplyFilterLaplace5x5(iid2);
  		
 		display->Show(iid2);
+
+// 		auto iid3 = operate->Sub(iid1, iid2);
+// 		display->Show(iid3);
 		//auto iid1 = process->ApplyCorrectionDarkRef(iid);
 
 //		display->Show(iid);

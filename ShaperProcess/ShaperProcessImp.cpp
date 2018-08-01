@@ -39,6 +39,7 @@ namespace SHAPER
 		m_supportedProcessorTypeList.push_back(ProcessorTypes::kLowPass3x3);
 		m_supportedProcessorTypeList.push_back(ProcessorTypes::kLowPass5x5);
 		m_supportedProcessorTypeList.push_back(ProcessorTypes::KBilateral);
+		m_supportedProcessorTypeList.push_back(ProcessorTypes::KSobel3x3);
 		m_supportedProcessorTypeList.push_back(ProcessorTypes::kHistogramEqualization);
 		m_supportedProcessorTypeList.push_back(ProcessorTypes::kIntensityNegative);
 		m_supportedProcessorTypeList.push_back(ProcessorTypes::kIntensityLog);
@@ -447,6 +448,19 @@ namespace SHAPER
 		auto buf = m_bufferCore->Resume(iid);
 		SID sid = iid >> 16;
 		auto filter = m_processorCore->Active(sid, ProcessorTypes::KBilateral);
+		auto filterBuffer = std::move(m_bufferCore->AcquireRaw(sid));
+		ELDER::ImageInfo outImageInfo;
+		ENSURE_THROW_MSG(filter->Apply(std::move(buf), std::move(filterBuffer), outImageInfo), "Apply bilateral Failed");
+
+		return m_bufferCore->MakeID(std::move(filterBuffer), sid);
+	}
+
+	IID CProcessImp::ApplyFilterSobel3x3(IID iid)
+	{
+		std::lock_guard<std::mutex> lock(m_applyMutex);
+		auto buf = m_bufferCore->Resume(iid);
+		SID sid = iid >> 16;
+		auto filter = m_processorCore->Active(sid, ProcessorTypes::KSobel3x3);
 		auto filterBuffer = std::move(m_bufferCore->AcquireRaw(sid));
 		ELDER::ImageInfo outImageInfo;
 		ENSURE_THROW_MSG(filter->Apply(std::move(buf), std::move(filterBuffer), outImageInfo), "Apply bilateral Failed");

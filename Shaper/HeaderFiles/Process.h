@@ -97,6 +97,9 @@ namespace SHAPER
 		/// Just apply the bilateral filter.
 		virtual IID ApplyFilterBilateral(IID) noexcept(false) = 0;
 
+		/// Just apply the sobel 3x3 filter.
+		virtual IID ApplyFilterSobel3x3(IID) noexcept(false) = 0;
+
 		/// Intensity
 		/// Just apply the histogram equalization.
 		virtual IID ApplyIntensityHistogramEqual(IID) noexcept(false) = 0;

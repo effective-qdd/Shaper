@@ -55,6 +55,7 @@ namespace SHAPER
 		kLowPass3x3,
 		kLowPass5x5,
 		KBilateral,
+		KSobel3x3,
 
 		/// Enhancement
 		kHistogramEqualization, ///< Histogram equalization

@@ -10,6 +10,8 @@
 #include "../../Elder/ImageAlgorithm/ImageFilterHighPass.hpp"
 #include "../../Elder/ImageAlgorithm/ImageFilterLowPass.hpp"
 #include "../../Elder/ImageAlgorithm/ImageFilterBilateral.hpp"
+#include "../../Elder/ImageAlgorithm/ImageFilterSobel.hpp"
+
 
 #include "SuperFilter.h"
 
@@ -27,11 +29,6 @@ namespace SHAPER
 		void SetGaussianSigma(float);
 
 	private:
-		std::map<ProcessorTypes, std::shared_ptr<ELDER::CImageProcessor>> CreateAvailableFilters8u1c(ELDER::ImageInfo const&);
-		std::map<ProcessorTypes, std::shared_ptr<ELDER::CImageProcessor>> CreateAvailableFilters16u1c(ELDER::ImageInfo const&);
-		std::map<ProcessorTypes, std::shared_ptr<ELDER::CImageProcessor>> CreateAvailableFilters32f1c(ELDER::ImageInfo const&);
-
-	private:
 		std::list<std::shared_ptr<ELDER::ALGORITHM::FILTER::CMedian>> m_medianList;
 		std::list<std::shared_ptr<ELDER::ALGORITHM::FILTER::CGaussian>> m_gaussianList;
 		std::list<std::shared_ptr<ELDER::ALGORITHM::FILTER::CMean>> m_meanList;
@@ -41,6 +38,7 @@ namespace SHAPER
 		std::list<std::shared_ptr<ELDER::ALGORITHM::FILTER::CHighPass>> m_highPassList;
 		std::list<std::shared_ptr<ELDER::ALGORITHM::FILTER::CLowPass>> m_lowPassList;
 		std::list<std::shared_ptr<ELDER::ALGORITHM::FILTER::CBilateral>> m_bilateralList;
+		std::list<std::shared_ptr<ELDER::ALGORITHM::FILTER::CSobel>> m_sobelList;
 	};
 }
 
