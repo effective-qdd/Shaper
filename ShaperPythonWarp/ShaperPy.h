@@ -45,6 +45,8 @@ public:
 		kHighPass5x5,
 		kLowPass3x3,
 		kLowPass5x5,
+		KSobel3x3,
+		KSobel5x5,
 		KBilateral,
 
 		/// Enhancement
@@ -81,14 +83,6 @@ public:
 		kHorizintal = 1,
 		kVertical,
 		kHorizontalVertical
-	};
-
-	struct Rect
-	{
-		int x;
-		int y;
-		int width;
-		int height;
 	};
 
 	ShaperPy();
@@ -207,6 +201,10 @@ public:
 
 	ShaperPy::IID applyFilterLowPass5x5(ShaperPy::IID);
 
+	ShaperPy::IID applyFilterSobel3x3(ShaperPy::IID);
+
+	ShaperPy::IID applyFilterSobel5x5(ShaperPy::IID);
+
 	ShaperPy::IID applyFilterBilateral(ShaperPy::IID);
 
 	ShaperPy::IID applyIntensityHistogramEqual(ShaperPy::IID);
@@ -263,6 +261,12 @@ public:
 	~FilterPy() = default;
 
 	void setGaussianSigma(float);
+
+	void setBilateralRadius(int);
+
+	void setBilateralSigmaColor(double);
+
+	void setBilateralSigmaSpace(double);
 };
 
 class TransformPy
@@ -320,9 +324,9 @@ public:
 
 	ShaperPy::IID copy(ShaperPy::IID);
 
-	ShaperPy::IID copyCrop(ShaperPy::IID, ShaperPy::Rect);
+	ShaperPy::IID copyCrop(ShaperPy::IID, int, int, int, int);
 
-	void copyROI(ShaperPy::IID, ShaperPy::IID, ShaperPy::Rect);
+	void copyROI(ShaperPy::IID, ShaperPy::IID, int, int, int, int);
 
 	ShaperPy::IID add(ShaperPy::IID, ShaperPy::IID);
 

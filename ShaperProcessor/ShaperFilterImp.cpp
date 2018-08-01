@@ -127,17 +127,23 @@ namespace SHAPER
 			availableFilterMap.emplace(ProcessorTypes::kLowPass5x5, std::move(lowPass5x5_8u1c_pro));
 			m_lowPassList.push_back(lowPass5x5_8u1c);
 
+			auto sobel3x3_8u1c = std::make_shared<ELDER::ALGORITHM::FILTER::CSobel8u1c>();
+			sobel3x3_8u1c->Initialize(imageInfo.size, 3);
+			std::shared_ptr<ELDER::CImageProcessor> sobel3x3_8u1c_pro = std::make_shared<ELDER::CImageProcessor>(std::move(std::bind(&ELDER::ALGORITHM::FILTER::CSobel8u1c::Apply, sobel3x3_8u1c, std::placeholders::_1, std::placeholders::_2)));
+			availableFilterMap.emplace(ProcessorTypes::KSobel3x3, std::move(sobel3x3_8u1c_pro));
+			m_sobelList.push_back(sobel3x3_8u1c);
+
+			auto sobel5x5_8u1c = std::make_shared<ELDER::ALGORITHM::FILTER::CSobel8u1c>();
+			sobel5x5_8u1c->Initialize(imageInfo.size, 5);
+			std::shared_ptr<ELDER::CImageProcessor> sobel5x5_8u1c_pro = std::make_shared<ELDER::CImageProcessor>(std::move(std::bind(&ELDER::ALGORITHM::FILTER::CSobel8u1c::Apply, sobel5x5_8u1c, std::placeholders::_1, std::placeholders::_2)));
+			availableFilterMap.emplace(ProcessorTypes::KSobel5x5, std::move(sobel5x5_8u1c_pro));
+			m_sobelList.push_back(sobel5x5_8u1c);
+
 			auto bilateral_8u1c = std::make_shared<ELDER::ALGORITHM::FILTER::CBilateral8u1c>();
 			bilateral_8u1c->Initialize(imageInfo.size);
 			std::shared_ptr<ELDER::CImageProcessor> bilateral_8u1c_pro = std::make_shared<ELDER::CImageProcessor>(std::move(std::bind(&ELDER::ALGORITHM::FILTER::CBilateral8u1c::Apply, bilateral_8u1c, std::placeholders::_1, std::placeholders::_2)));
 			availableFilterMap.emplace(ProcessorTypes::KBilateral, std::move(bilateral_8u1c_pro));
 			m_bilateralList.push_back(bilateral_8u1c);
-
-			auto sobel_8u1c = std::make_shared<ELDER::ALGORITHM::FILTER::CSobel8u1c>();
-			sobel_8u1c->Initialize(imageInfo.size, 3);
-			std::shared_ptr<ELDER::CImageProcessor> sobel_8u1c_pro = std::make_shared<ELDER::CImageProcessor>(std::move(std::bind(&ELDER::ALGORITHM::FILTER::CSobel8u1c::Apply, sobel_8u1c, std::placeholders::_1, std::placeholders::_2)));
-			availableFilterMap.emplace(ProcessorTypes::KSobel3x3, std::move(sobel_8u1c_pro));
-			m_sobelList.push_back(sobel_8u1c);
 		}
 		else if (imageInfo.bitDepth == 16)
 		{
@@ -237,17 +243,23 @@ namespace SHAPER
 			availableFilterMap.emplace(ProcessorTypes::kLowPass5x5, std::move(lowPass5x5_16u1c_pro));
 			m_lowPassList.push_back(lowPass5x5_16u1c);
 
+			auto sobel3x3_16u1c = std::make_shared<ELDER::ALGORITHM::FILTER::CSobel16u1c>();
+			sobel3x3_16u1c->Initialize(imageInfo.size, 3);
+			std::shared_ptr<ELDER::CImageProcessor> sobel3x3_16u1c_pro = std::make_shared<ELDER::CImageProcessor>(std::move(std::bind(&ELDER::ALGORITHM::FILTER::CSobel16u1c::Apply, sobel3x3_16u1c, std::placeholders::_1, std::placeholders::_2)));
+			availableFilterMap.emplace(ProcessorTypes::KSobel3x3, std::move(sobel3x3_16u1c_pro));
+			m_sobelList.push_back(sobel3x3_16u1c);
+
+			auto sobel5x5_16u1c = std::make_shared<ELDER::ALGORITHM::FILTER::CSobel16u1c>();
+			sobel5x5_16u1c->Initialize(imageInfo.size, 5);
+			std::shared_ptr<ELDER::CImageProcessor> sobel5x5_16u1c_pro = std::make_shared<ELDER::CImageProcessor>(std::move(std::bind(&ELDER::ALGORITHM::FILTER::CSobel16u1c::Apply, sobel5x5_16u1c, std::placeholders::_1, std::placeholders::_2)));
+			availableFilterMap.emplace(ProcessorTypes::KSobel5x5, std::move(sobel5x5_16u1c_pro));
+			m_sobelList.push_back(sobel5x5_16u1c);
+
 			auto bilateral_16u1c = std::make_shared<ELDER::ALGORITHM::FILTER::CBilateral16u1c>();
 			bilateral_16u1c->Initialize(imageInfo.size);
 			std::shared_ptr<ELDER::CImageProcessor> bilateral_16u1c_pro = std::make_shared<ELDER::CImageProcessor>(std::move(std::bind(&ELDER::ALGORITHM::FILTER::CBilateral16u1c::Apply, bilateral_16u1c, std::placeholders::_1, std::placeholders::_2)));
 			availableFilterMap.emplace(ProcessorTypes::KBilateral, std::move(bilateral_16u1c_pro));
 			m_bilateralList.push_back(bilateral_16u1c);
-
-			auto sobel_16u1c = std::make_shared<ELDER::ALGORITHM::FILTER::CSobel16u1c>();
-			sobel_16u1c->Initialize(imageInfo.size, 3);
-			std::shared_ptr<ELDER::CImageProcessor> sobel_16u1c_pro = std::make_shared<ELDER::CImageProcessor>(std::move(std::bind(&ELDER::ALGORITHM::FILTER::CSobel16u1c::Apply, sobel_16u1c, std::placeholders::_1, std::placeholders::_2)));
-			availableFilterMap.emplace(ProcessorTypes::KSobel3x3, std::move(sobel_16u1c_pro));
-			m_sobelList.push_back(sobel_16u1c);
 		}
 		else if (imageInfo.bitDepth == 32)
 		{
@@ -347,17 +359,23 @@ namespace SHAPER
 			availableFilterMap.emplace(ProcessorTypes::kLowPass5x5, std::move(lowPass5x5_32f1c_pro));
 			m_lowPassList.push_back(lowPass5x5_32f1c);
 
+			auto sobel3x3_32f1c = std::make_shared<ELDER::ALGORITHM::FILTER::CSobel32f1c>();
+			sobel3x3_32f1c->Initialize(imageInfo.size, 3);
+			std::shared_ptr<ELDER::CImageProcessor> sobel3x3_32f1c_pro = std::make_shared<ELDER::CImageProcessor>(std::move(std::bind(&ELDER::ALGORITHM::FILTER::CSobel32f1c::Apply, sobel3x3_32f1c, std::placeholders::_1, std::placeholders::_2)));
+			availableFilterMap.emplace(ProcessorTypes::KSobel3x3, std::move(sobel3x3_32f1c_pro));
+			m_sobelList.push_back(sobel3x3_32f1c);
+
+			auto sobel5x5_32f1c = std::make_shared<ELDER::ALGORITHM::FILTER::CSobel32f1c>();
+			sobel5x5_32f1c->Initialize(imageInfo.size, 5);
+			std::shared_ptr<ELDER::CImageProcessor> sobel5x5_32f1c_pro = std::make_shared<ELDER::CImageProcessor>(std::move(std::bind(&ELDER::ALGORITHM::FILTER::CSobel32f1c::Apply, sobel5x5_32f1c, std::placeholders::_1, std::placeholders::_2)));
+			availableFilterMap.emplace(ProcessorTypes::KSobel5x5, std::move(sobel5x5_32f1c_pro));
+			m_sobelList.push_back(sobel5x5_32f1c);
+
 			auto bilateral_32f1c = std::make_shared<ELDER::ALGORITHM::FILTER::CBilateral32f1c>();
 			bilateral_32f1c->Initialize(imageInfo.size);
 			std::shared_ptr<ELDER::CImageProcessor> bilateral_32f1c_pro = std::make_shared<ELDER::CImageProcessor>(std::move(std::bind(&ELDER::ALGORITHM::FILTER::CBilateral32f1c::Apply, bilateral_32f1c, std::placeholders::_1, std::placeholders::_2)));
 			availableFilterMap.emplace(ProcessorTypes::KBilateral, std::move(bilateral_32f1c_pro));
 			m_bilateralList.push_back(bilateral_32f1c);
-
-			auto sobel_32f1c = std::make_shared<ELDER::ALGORITHM::FILTER::CSobel32f1c>();
-			sobel_32f1c->Initialize(imageInfo.size, 3);
-			std::shared_ptr<ELDER::CImageProcessor> sobel_32f1c_pro = std::make_shared<ELDER::CImageProcessor>(std::move(std::bind(&ELDER::ALGORITHM::FILTER::CSobel32f1c::Apply, sobel_32f1c, std::placeholders::_1, std::placeholders::_2)));
-			availableFilterMap.emplace(ProcessorTypes::KSobel3x3, std::move(sobel_32f1c_pro));
-			m_sobelList.push_back(sobel_32f1c);
 		}
 	
 		return availableFilterMap;

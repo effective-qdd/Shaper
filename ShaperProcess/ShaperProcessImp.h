@@ -73,9 +73,11 @@ namespace SHAPER
 
 		IID ApplyFilterLowPass5x5(IID);
 
-		IID ApplyFilterBilateral(IID);
-
 		IID ApplyFilterSobel3x3(IID);
+
+		IID ApplyFilterSobel5x5(IID);
+
+		IID ApplyFilterBilateral(IID);		
 
 		IID ApplyIntensityHistogramEqual(IID);
 

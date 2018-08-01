@@ -94,11 +94,14 @@ namespace SHAPER
 		/// Just apply the Low Pass 5x5 filter.
 		virtual IID ApplyFilterLowPass5x5(IID) noexcept(false) = 0;
 
-		/// Just apply the bilateral filter.
-		virtual IID ApplyFilterBilateral(IID) noexcept(false) = 0;
-
 		/// Just apply the sobel 3x3 filter.
 		virtual IID ApplyFilterSobel3x3(IID) noexcept(false) = 0;
+
+		/// Just apply the sobel 5x5 filter.
+		virtual IID ApplyFilterSobel5x5(IID) noexcept(false) = 0;
+
+		/// Just apply the bilateral filter.
+		virtual IID ApplyFilterBilateral(IID) noexcept(false) = 0;
 
 		/// Intensity
 		/// Just apply the histogram equalization.

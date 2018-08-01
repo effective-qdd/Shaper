@@ -440,6 +440,32 @@ namespace SHAPER
 		ENSURE_THROW_MSG(filter->Apply(std::move(buf), std::move(filterBuffer), outImageInfo), "Apply low pass 5x5 Failed");
 
 		return m_bufferCore->MakeID(std::move(filterBuffer), sid);
+	}	
+
+	IID CProcessImp::ApplyFilterSobel3x3(IID iid)
+	{
+		std::lock_guard<std::mutex> lock(m_applyMutex);
+		auto buf = m_bufferCore->Resume(iid);
+		SID sid = iid >> 16;
+		auto filter = m_processorCore->Active(sid, ProcessorTypes::KSobel3x3);
+		auto filterBuffer = std::move(m_bufferCore->AcquireRaw(sid));
+		ELDER::ImageInfo outImageInfo;
+		ENSURE_THROW_MSG(filter->Apply(std::move(buf), std::move(filterBuffer), outImageInfo), "Apply sobel 3x3 Failed");
+
+		return m_bufferCore->MakeID(std::move(filterBuffer), sid);
+	}
+
+	IID CProcessImp::ApplyFilterSobel5x5(IID iid)
+	{
+		std::lock_guard<std::mutex> lock(m_applyMutex);
+		auto buf = m_bufferCore->Resume(iid);
+		SID sid = iid >> 16;
+		auto filter = m_processorCore->Active(sid, ProcessorTypes::KSobel5x5);
+		auto filterBuffer = std::move(m_bufferCore->AcquireRaw(sid));
+		ELDER::ImageInfo outImageInfo;
+		ENSURE_THROW_MSG(filter->Apply(std::move(buf), std::move(filterBuffer), outImageInfo), "Apply sobel 5x5 Failed");
+
+		return m_bufferCore->MakeID(std::move(filterBuffer), sid);
 	}
 
 	IID CProcessImp::ApplyFilterBilateral(IID iid)
@@ -448,19 +474,6 @@ namespace SHAPER
 		auto buf = m_bufferCore->Resume(iid);
 		SID sid = iid >> 16;
 		auto filter = m_processorCore->Active(sid, ProcessorTypes::KBilateral);
-		auto filterBuffer = std::move(m_bufferCore->AcquireRaw(sid));
-		ELDER::ImageInfo outImageInfo;
-		ENSURE_THROW_MSG(filter->Apply(std::move(buf), std::move(filterBuffer), outImageInfo), "Apply bilateral Failed");
-
-		return m_bufferCore->MakeID(std::move(filterBuffer), sid);
-	}
-
-	IID CProcessImp::ApplyFilterSobel3x3(IID iid)
-	{
-		std::lock_guard<std::mutex> lock(m_applyMutex);
-		auto buf = m_bufferCore->Resume(iid);
-		SID sid = iid >> 16;
-		auto filter = m_processorCore->Active(sid, ProcessorTypes::KSobel3x3);
 		auto filterBuffer = std::move(m_bufferCore->AcquireRaw(sid));
 		ELDER::ImageInfo outImageInfo;
 		ENSURE_THROW_MSG(filter->Apply(std::move(buf), std::move(filterBuffer), outImageInfo), "Apply bilateral Failed");

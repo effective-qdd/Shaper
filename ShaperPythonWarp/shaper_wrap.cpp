@@ -3018,18 +3018,17 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 #define SWIGTYPE_p_ProcessPy swig_types[9]
 #define SWIGTYPE_p_ProcessorPy swig_types[10]
 #define SWIGTYPE_p_ShaperPy swig_types[11]
-#define SWIGTYPE_p_ShaperPy__Rect swig_types[12]
-#define SWIGTYPE_p_StreamPy swig_types[13]
-#define SWIGTYPE_p_TransformPy swig_types[14]
-#define SWIGTYPE_p_char swig_types[15]
-#define SWIGTYPE_p_float swig_types[16]
-#define SWIGTYPE_p_std__invalid_argument swig_types[17]
-#define SWIGTYPE_p_std__listT_unsigned_long_std__allocatorT_unsigned_long_t_t swig_types[18]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[19]
-#define SWIGTYPE_p_unsigned_char swig_types[20]
-#define SWIGTYPE_p_unsigned_short swig_types[21]
-static swig_type_info *swig_types[23];
-static swig_module_info swig_module = {swig_types, 22, 0, 0, 0, 0};
+#define SWIGTYPE_p_StreamPy swig_types[12]
+#define SWIGTYPE_p_TransformPy swig_types[13]
+#define SWIGTYPE_p_char swig_types[14]
+#define SWIGTYPE_p_float swig_types[15]
+#define SWIGTYPE_p_std__invalid_argument swig_types[16]
+#define SWIGTYPE_p_std__listT_unsigned_long_std__allocatorT_unsigned_long_t_t swig_types[17]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[18]
+#define SWIGTYPE_p_unsigned_char swig_types[19]
+#define SWIGTYPE_p_unsigned_short swig_types[20]
+static swig_type_info *swig_types[22];
+static swig_module_info swig_module = {swig_types, 21, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -6622,6 +6621,88 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ProcessPy_applyFilterSobel3x3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ProcessPy *arg1 = (ProcessPy *) 0 ;
+  ShaperPy::IID arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  ShaperPy::IID result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:ProcessPy_applyFilterSobel3x3",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ProcessPy, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ProcessPy_applyFilterSobel3x3" "', argument " "1"" of type '" "ProcessPy *""'"); 
+  }
+  arg1 = reinterpret_cast< ProcessPy * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ProcessPy_applyFilterSobel3x3" "', argument " "2"" of type '" "ShaperPy::IID""'");
+  } 
+  arg2 = static_cast< ShaperPy::IID >(val2);
+  {
+    try
+    {
+      result = (ShaperPy::IID)(arg1)->applyFilterSobel3x3(arg2);
+    }
+    catch (std::exception &e)
+    {
+      PyErr_SetString(PyExc_Exception, const_cast<char*>(e.what()));
+      SWIG_fail;
+    }
+  }
+  resultobj = SWIG_From_unsigned_SS_long(static_cast< unsigned long >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ProcessPy_applyFilterSobel5x5(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ProcessPy *arg1 = (ProcessPy *) 0 ;
+  ShaperPy::IID arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  ShaperPy::IID result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:ProcessPy_applyFilterSobel5x5",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ProcessPy, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ProcessPy_applyFilterSobel5x5" "', argument " "1"" of type '" "ProcessPy *""'"); 
+  }
+  arg1 = reinterpret_cast< ProcessPy * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ProcessPy_applyFilterSobel5x5" "', argument " "2"" of type '" "ShaperPy::IID""'");
+  } 
+  arg2 = static_cast< ShaperPy::IID >(val2);
+  {
+    try
+    {
+      result = (ShaperPy::IID)(arg1)->applyFilterSobel5x5(arg2);
+    }
+    catch (std::exception &e)
+    {
+      PyErr_SetString(PyExc_Exception, const_cast<char*>(e.what()));
+      SWIG_fail;
+    }
+  }
+  resultobj = SWIG_From_unsigned_SS_long(static_cast< unsigned long >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_ProcessPy_applyFilterBilateral(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   ProcessPy *arg1 = (ProcessPy *) 0 ;
@@ -7649,6 +7730,126 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_FilterPy_setBilateralRadius(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FilterPy *arg1 = (FilterPy *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:FilterPy_setBilateralRadius",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_FilterPy, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FilterPy_setBilateralRadius" "', argument " "1"" of type '" "FilterPy *""'"); 
+  }
+  arg1 = reinterpret_cast< FilterPy * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FilterPy_setBilateralRadius" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    try
+    {
+      (arg1)->setBilateralRadius(arg2);
+    }
+    catch (std::exception &e)
+    {
+      PyErr_SetString(PyExc_Exception, const_cast<char*>(e.what()));
+      SWIG_fail;
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FilterPy_setBilateralSigmaColor(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FilterPy *arg1 = (FilterPy *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:FilterPy_setBilateralSigmaColor",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_FilterPy, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FilterPy_setBilateralSigmaColor" "', argument " "1"" of type '" "FilterPy *""'"); 
+  }
+  arg1 = reinterpret_cast< FilterPy * >(argp1);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FilterPy_setBilateralSigmaColor" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  {
+    try
+    {
+      (arg1)->setBilateralSigmaColor(arg2);
+    }
+    catch (std::exception &e)
+    {
+      PyErr_SetString(PyExc_Exception, const_cast<char*>(e.what()));
+      SWIG_fail;
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FilterPy_setBilateralSigmaSpace(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FilterPy *arg1 = (FilterPy *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:FilterPy_setBilateralSigmaSpace",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_FilterPy, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FilterPy_setBilateralSigmaSpace" "', argument " "1"" of type '" "FilterPy *""'"); 
+  }
+  arg1 = reinterpret_cast< FilterPy * >(argp1);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FilterPy_setBilateralSigmaSpace" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  {
+    try
+    {
+      (arg1)->setBilateralSigmaSpace(arg2);
+    }
+    catch (std::exception &e)
+    {
+      PyErr_SetString(PyExc_Exception, const_cast<char*>(e.what()));
+      SWIG_fail;
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_FilterPy(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FilterPy *arg1 = (FilterPy *) 0 ;
@@ -8325,19 +8526,31 @@ SWIGINTERN PyObject *_wrap_OperatorPy_copyCrop(PyObject *SWIGUNUSEDPARM(self), P
   PyObject *resultobj = 0;
   OperatorPy *arg1 = (OperatorPy *) 0 ;
   ShaperPy::IID arg2 ;
-  ShaperPy::Rect arg3 ;
+  int arg3 ;
+  int arg4 ;
+  int arg5 ;
+  int arg6 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   unsigned long val2 ;
   int ecode2 = 0 ;
-  void *argp3 ;
-  int res3 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  int val4 ;
+  int ecode4 = 0 ;
+  int val5 ;
+  int ecode5 = 0 ;
+  int val6 ;
+  int ecode6 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
   ShaperPy::IID result;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOO:OperatorPy_copyCrop",&obj0,&obj1,&obj2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOO:OperatorPy_copyCrop",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_OperatorPy, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorPy_copyCrop" "', argument " "1"" of type '" "OperatorPy *""'"); 
@@ -8348,23 +8561,30 @@ SWIGINTERN PyObject *_wrap_OperatorPy_copyCrop(PyObject *SWIGUNUSEDPARM(self), P
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "OperatorPy_copyCrop" "', argument " "2"" of type '" "ShaperPy::IID""'");
   } 
   arg2 = static_cast< ShaperPy::IID >(val2);
-  {
-    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_ShaperPy__Rect,  0  | 0);
-    if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "OperatorPy_copyCrop" "', argument " "3"" of type '" "ShaperPy::Rect""'"); 
-    }  
-    if (!argp3) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OperatorPy_copyCrop" "', argument " "3"" of type '" "ShaperPy::Rect""'");
-    } else {
-      ShaperPy::Rect * temp = reinterpret_cast< ShaperPy::Rect * >(argp3);
-      arg3 = *temp;
-      if (SWIG_IsNewObj(res3)) delete temp;
-    }
-  }
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "OperatorPy_copyCrop" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  ecode4 = SWIG_AsVal_int(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "OperatorPy_copyCrop" "', argument " "4"" of type '" "int""'");
+  } 
+  arg4 = static_cast< int >(val4);
+  ecode5 = SWIG_AsVal_int(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "OperatorPy_copyCrop" "', argument " "5"" of type '" "int""'");
+  } 
+  arg5 = static_cast< int >(val5);
+  ecode6 = SWIG_AsVal_int(obj5, &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "OperatorPy_copyCrop" "', argument " "6"" of type '" "int""'");
+  } 
+  arg6 = static_cast< int >(val6);
   {
     try
     {
-      result = (ShaperPy::IID)(arg1)->copyCrop(arg2,arg3);
+      result = (ShaperPy::IID)(arg1)->copyCrop(arg2,arg3,arg4,arg5,arg6);
     }
     catch (std::exception &e)
     {
@@ -8384,21 +8604,33 @@ SWIGINTERN PyObject *_wrap_OperatorPy_copyROI(PyObject *SWIGUNUSEDPARM(self), Py
   OperatorPy *arg1 = (OperatorPy *) 0 ;
   ShaperPy::IID arg2 ;
   ShaperPy::IID arg3 ;
-  ShaperPy::Rect arg4 ;
+  int arg4 ;
+  int arg5 ;
+  int arg6 ;
+  int arg7 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   unsigned long val2 ;
   int ecode2 = 0 ;
   unsigned long val3 ;
   int ecode3 = 0 ;
-  void *argp4 ;
-  int res4 = 0 ;
+  int val4 ;
+  int ecode4 = 0 ;
+  int val5 ;
+  int ecode5 = 0 ;
+  int val6 ;
+  int ecode6 = 0 ;
+  int val7 ;
+  int ecode7 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOOO:OperatorPy_copyROI",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOOO:OperatorPy_copyROI",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5,&obj6)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_OperatorPy, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorPy_copyROI" "', argument " "1"" of type '" "OperatorPy *""'"); 
@@ -8414,23 +8646,30 @@ SWIGINTERN PyObject *_wrap_OperatorPy_copyROI(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "OperatorPy_copyROI" "', argument " "3"" of type '" "ShaperPy::IID""'");
   } 
   arg3 = static_cast< ShaperPy::IID >(val3);
-  {
-    res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_ShaperPy__Rect,  0  | 0);
-    if (!SWIG_IsOK(res4)) {
-      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "OperatorPy_copyROI" "', argument " "4"" of type '" "ShaperPy::Rect""'"); 
-    }  
-    if (!argp4) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OperatorPy_copyROI" "', argument " "4"" of type '" "ShaperPy::Rect""'");
-    } else {
-      ShaperPy::Rect * temp = reinterpret_cast< ShaperPy::Rect * >(argp4);
-      arg4 = *temp;
-      if (SWIG_IsNewObj(res4)) delete temp;
-    }
-  }
+  ecode4 = SWIG_AsVal_int(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "OperatorPy_copyROI" "', argument " "4"" of type '" "int""'");
+  } 
+  arg4 = static_cast< int >(val4);
+  ecode5 = SWIG_AsVal_int(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "OperatorPy_copyROI" "', argument " "5"" of type '" "int""'");
+  } 
+  arg5 = static_cast< int >(val5);
+  ecode6 = SWIG_AsVal_int(obj5, &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "OperatorPy_copyROI" "', argument " "6"" of type '" "int""'");
+  } 
+  arg6 = static_cast< int >(val6);
+  ecode7 = SWIG_AsVal_int(obj6, &val7);
+  if (!SWIG_IsOK(ecode7)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "OperatorPy_copyROI" "', argument " "7"" of type '" "int""'");
+  } 
+  arg7 = static_cast< int >(val7);
   {
     try
     {
-      (arg1)->copyROI(arg2,arg3,arg4);
+      (arg1)->copyROI(arg2,arg3,arg4,arg5,arg6,arg7);
     }
     catch (std::exception &e)
     {
@@ -9420,6 +9659,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"ProcessPy_applyFilterHighPass5x5", _wrap_ProcessPy_applyFilterHighPass5x5, METH_VARARGS, NULL},
 	 { (char *)"ProcessPy_applyFilterLowPass3x3", _wrap_ProcessPy_applyFilterLowPass3x3, METH_VARARGS, NULL},
 	 { (char *)"ProcessPy_applyFilterLowPass5x5", _wrap_ProcessPy_applyFilterLowPass5x5, METH_VARARGS, NULL},
+	 { (char *)"ProcessPy_applyFilterSobel3x3", _wrap_ProcessPy_applyFilterSobel3x3, METH_VARARGS, NULL},
+	 { (char *)"ProcessPy_applyFilterSobel5x5", _wrap_ProcessPy_applyFilterSobel5x5, METH_VARARGS, NULL},
 	 { (char *)"ProcessPy_applyFilterBilateral", _wrap_ProcessPy_applyFilterBilateral, METH_VARARGS, NULL},
 	 { (char *)"ProcessPy_applyIntensityHistogramEqual", _wrap_ProcessPy_applyIntensityHistogramEqual, METH_VARARGS, NULL},
 	 { (char *)"ProcessPy_applyIntensityHistogramLocal", _wrap_ProcessPy_applyIntensityHistogramLocal, METH_VARARGS, NULL},
@@ -9446,6 +9687,9 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_ProcessPy", _wrap_delete_ProcessPy, METH_VARARGS, NULL},
 	 { (char *)"ProcessPy_swigregister", ProcessPy_swigregister, METH_VARARGS, NULL},
 	 { (char *)"FilterPy_setGaussianSigma", _wrap_FilterPy_setGaussianSigma, METH_VARARGS, NULL},
+	 { (char *)"FilterPy_setBilateralRadius", _wrap_FilterPy_setBilateralRadius, METH_VARARGS, NULL},
+	 { (char *)"FilterPy_setBilateralSigmaColor", _wrap_FilterPy_setBilateralSigmaColor, METH_VARARGS, NULL},
+	 { (char *)"FilterPy_setBilateralSigmaSpace", _wrap_FilterPy_setBilateralSigmaSpace, METH_VARARGS, NULL},
 	 { (char *)"delete_FilterPy", _wrap_delete_FilterPy, METH_VARARGS, NULL},
 	 { (char *)"FilterPy_swigregister", FilterPy_swigregister, METH_VARARGS, NULL},
 	 { (char *)"TransformPy_setRotationSpecialAngle", _wrap_TransformPy_setRotationSpecialAngle, METH_VARARGS, NULL},
@@ -9507,7 +9751,6 @@ static swig_type_info _swigt__p_PID = {"_p_PID", "PID *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ProcessPy = {"_p_ProcessPy", "ProcessPy *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ProcessorPy = {"_p_ProcessorPy", "ProcessorPy *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ShaperPy = {"_p_ShaperPy", "ShaperPy *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_ShaperPy__Rect = {"_p_ShaperPy__Rect", "ShaperPy::Rect *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_StreamPy = {"_p_StreamPy", "StreamPy *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_TransformPy = {"_p_TransformPy", "TransformPy *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
@@ -9531,7 +9774,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_ProcessPy,
   &_swigt__p_ProcessorPy,
   &_swigt__p_ShaperPy,
-  &_swigt__p_ShaperPy__Rect,
   &_swigt__p_StreamPy,
   &_swigt__p_TransformPy,
   &_swigt__p_char,
@@ -9555,7 +9797,6 @@ static swig_cast_info _swigc__p_PID[] = {  {&_swigt__p_PID, 0, 0, 0},{0, 0, 0, 0
 static swig_cast_info _swigc__p_ProcessPy[] = {  {&_swigt__p_ProcessPy, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ProcessorPy[] = {  {&_swigt__p_ProcessorPy, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ShaperPy[] = {  {&_swigt__p_ShaperPy, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_ShaperPy__Rect[] = {  {&_swigt__p_ShaperPy__Rect, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_StreamPy[] = {  {&_swigt__p_StreamPy, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_TransformPy[] = {  {&_swigt__p_TransformPy, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
@@ -9579,7 +9820,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_ProcessPy,
   _swigc__p_ProcessorPy,
   _swigc__p_ShaperPy,
-  _swigc__p_ShaperPy__Rect,
   _swigc__p_StreamPy,
   _swigc__p_TransformPy,
   _swigc__p_char,
@@ -10301,6 +10541,8 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "ShaperPy_kHighPass5x5",SWIG_From_int(static_cast< int >(ShaperPy::kHighPass5x5)));
   SWIG_Python_SetConstant(d, "ShaperPy_kLowPass3x3",SWIG_From_int(static_cast< int >(ShaperPy::kLowPass3x3)));
   SWIG_Python_SetConstant(d, "ShaperPy_kLowPass5x5",SWIG_From_int(static_cast< int >(ShaperPy::kLowPass5x5)));
+  SWIG_Python_SetConstant(d, "ShaperPy_KSobel3x3",SWIG_From_int(static_cast< int >(ShaperPy::KSobel3x3)));
+  SWIG_Python_SetConstant(d, "ShaperPy_KSobel5x5",SWIG_From_int(static_cast< int >(ShaperPy::KSobel5x5)));
   SWIG_Python_SetConstant(d, "ShaperPy_KBilateral",SWIG_From_int(static_cast< int >(ShaperPy::KBilateral)));
   SWIG_Python_SetConstant(d, "ShaperPy_kHistogramEqualization",SWIG_From_int(static_cast< int >(ShaperPy::kHistogramEqualization)));
   SWIG_Python_SetConstant(d, "ShaperPy_kIntensityNegative",SWIG_From_int(static_cast< int >(ShaperPy::kIntensityNegative)));

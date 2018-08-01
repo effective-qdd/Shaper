@@ -300,6 +300,18 @@ ShaperPy::IID ProcessPy::applyFilterLowPass5x5(ShaperPy::IID iid)
 	return g_shaperProcess->ApplyFilterLowPass5x5(iid);
 }
 
+ShaperPy::IID ProcessPy::applyFilterSobel3x3(ShaperPy::IID iid)
+{
+	ENSURE_THROW_MSG(g_shaperProcess != nullptr, "Shaper process is null");
+	return g_shaperProcess->ApplyFilterSobel3x3(iid);
+}
+
+ShaperPy::IID ProcessPy::applyFilterSobel5x5(ShaperPy::IID iid)
+{
+	ENSURE_THROW_MSG(g_shaperProcess != nullptr, "Shaper process is null");
+	return g_shaperProcess->ApplyFilterSobel5x5(iid);
+}
+
 ShaperPy::IID ProcessPy::applyFilterBilateral(ShaperPy::IID iid)
 {
 	ENSURE_THROW_MSG(g_shaperProcess != nullptr, "Shaper process is null");
@@ -446,6 +458,24 @@ void FilterPy::setGaussianSigma(float value)
 	g_shaperProcessorFilter->SetGaussianSigma(value);
 }
 
+void FilterPy::setBilateralRadius(int radius)
+{
+	ENSURE_THROW_MSG(g_shaperProcessorFilter != nullptr, "Shaper processor filter is null");
+	g_shaperProcessorFilter->SetBilateralRadius(radius);
+}
+
+void FilterPy::setBilateralSigmaColor(double sigmaColor)
+{
+	ENSURE_THROW_MSG(g_shaperProcessorFilter != nullptr, "Shaper processor filter is null");
+	g_shaperProcessorFilter->SetBilateralSigmaColor(sigmaColor);
+}
+
+void FilterPy::setBilateralSigmaSpace(double sigmaSpace)
+{
+	ENSURE_THROW_MSG(g_shaperProcessorFilter != nullptr, "Shaper processor filter is null");
+	g_shaperProcessorFilter->SetBilateralSigmaSpace(sigmaSpace);
+}
+
 
 //////////////////////////////////////////////////////////////////////////
 /// RotationPy
@@ -537,18 +567,18 @@ ShaperPy::IID OperatorPy::copy(ShaperPy::IID iid)
 	return g_shaperOperator->Copy(iid);
 }
 
-ShaperPy::IID OperatorPy::copyCrop(ShaperPy::IID iid, ShaperPy::Rect rect)
+ShaperPy::IID OperatorPy::copyCrop(ShaperPy::IID iid, int x, int y, int w, int h)
 {
 	ENSURE_THROW_MSG(g_shaperOperator != nullptr, "Shaper operator is null");
 
-	return g_shaperOperator->CopyCrop(iid, { { rect.x, rect.y}, { rect.width, rect.height} });
+	return g_shaperOperator->CopyCrop(iid, { { x, y}, { w, h} });
 }
 
-void OperatorPy::copyROI(ShaperPy::IID iid1, ShaperPy::IID iid2, ShaperPy::Rect rect)
+void OperatorPy::copyROI(ShaperPy::IID iid1, ShaperPy::IID iid2, int x, int y, int w , int h)
 {
 	ENSURE_THROW_MSG(g_shaperOperator != nullptr, "Shaper operator is null");
 
-	g_shaperOperator->CopyROI(iid1, iid2, { { rect.x, rect.y },{ rect.width, rect.height } });
+	g_shaperOperator->CopyROI(iid1, iid2, { {x, y },{ w, h } });
 }
 
 ShaperPy::IID OperatorPy::add(ShaperPy::IID iid1, ShaperPy::IID iid2)
