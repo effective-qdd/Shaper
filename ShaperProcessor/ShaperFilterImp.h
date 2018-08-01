@@ -28,6 +28,12 @@ namespace SHAPER
 
 		void SetGaussianSigma(float);
 
+		void SetBilateralRadius(int);
+
+		void SetBilateralSigmaColor(double);
+
+		void SetBilateralSigmaSpace(double);
+
 	private:
 		std::list<std::shared_ptr<ELDER::ALGORITHM::FILTER::CMedian>> m_medianList;
 		std::list<std::shared_ptr<ELDER::ALGORITHM::FILTER::CGaussian>> m_gaussianList;

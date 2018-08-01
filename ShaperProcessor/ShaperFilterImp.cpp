@@ -371,6 +371,29 @@ namespace SHAPER
 		}
 	}
 
+	void CFilterImp::SetBilateralRadius(int radius)
+	{
+		for (const auto &bilateral : m_bilateralList)
+		{
+			bilateral->SetRadius(radius);
+		}
+	}
+
+	void CFilterImp::SetBilateralSigmaColor(double sigmaColor)
+	{
+		for (const auto &bilateral : m_bilateralList)
+		{
+			bilateral->SetSigmaColor(sigmaColor);
+		}
+	}
+
+	void CFilterImp::SetBilateralSigmaSpace(double sigmaSpace)
+	{
+		for (const auto &bilateral : m_bilateralList)
+		{
+			bilateral->SetSigmaSpace(sigmaSpace);
+		}
+	}
 	
 }
 
